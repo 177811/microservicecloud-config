@@ -1,13 +1,13 @@
-﻿spring: 
+﻿spring:
   profiles:
     active:
     - dev
---- 
+---
 server:
   port: 8001
-spring: 
+spring:
    profiles: dev
-   application: 
+   application:
     name: microservicecloud-config-dept-client
    datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -19,21 +19,22 @@ spring:
       min-idle: 5
       initial-size: 5
       max-total: 5
-      max-wait-millis: 200 
+      max-wait-millis: 200
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
   type-aliases-package: com.springcloud.entities
   mapper-locations:
   - classpath:mybatis/mapper/**/*.xml
- 
-eureka: 
-  client: #客户端注册进eureka服务列表内
-    service-url: 
-      defaultZone: http://eureka-7001:7001/eureka
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurake-7001:7001/eureka,http://eurake-7002:7002/eureka,http://eurake-7003:7003/eureka
   instance:
-    instance-id: dept-8001
+    instance-id: mincroservicecloudconfig8001
     prefer-ip-address: true
- 
+
+
 info:
   app.name: atguigu-microservicecloud-springcloudconfig01
   company.name: www.atguigu.com
@@ -42,9 +43,9 @@ info:
 ---
 server:
   port: 8001
-spring: 
+spring:
    profiles: test
-   application: 
+   application:
     name: microservicecloud-config-dept-client
    datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -56,23 +57,31 @@ spring:
       min-idle: 5
       initial-size: 5
       max-total: 5
-      max-wait-millis: 200  
-  
-  
+      max-wait-millis: 200
+
+
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
   type-aliases-package: com.springcloud.entities
   mapper-locations:
   - classpath:mybatis/mapper/**/*.xml
- 
-eureka: 
-  client: #客户端注册进eureka服务列表内
-    service-url: 
-      defaultZone: http://eureka-7001:7001/eureka
-  instance:
-    instance-id: dept-8001
-    prefer-ip-address: true
- 
+
+#eureka:
+#  client: #客户端注册进eureka服务列表内
+#    service-url:
+#      defaultZone: http://eureka-7001:7001/eureka
+#  instance:
+#    instance-id: dept-8001
+#    prefer-ip-address: true
+  - eureka:
+      client:
+        service-url:
+          defaultZone: http://eurake-7001:7001/eureka,http://eurake-7002:7002/eureka,http://eurake-7003:7003/eureka
+      instance:
+        instance-id: mincroservicecloudconfig8001
+        prefer-ip-address: true
+
+
 info:
   app.name: atguigu-microservicecloud-springcloudconfig02
   company.name: www.atguigu.com
